@@ -12,22 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ToyMvvm.DataContext;
-using ToyMvvm.Model;
 
-namespace ToyMvvm
+namespace ToyMvvm.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FormulaView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FormulaView : UserControl
     {
-        public MainWindow()
+        public FormulaView()
         {
             InitializeComponent();
-            var storage = new FormulaStorage();
-            storage.Load();
-            DataContext = new FormulaStorageContext(storage);
         }
     }
 }

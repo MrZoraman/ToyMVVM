@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="ToyMvvm.View.FormulaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToyMvvm.View"
+             xmlns:datacontext="clr-namespace:ToyMvvm.DataContext"
+             mc:Ignorable="d" 
+              d:DataContext="{d:DesignInstance datacontext:FormulaContext}">
+    <Label Content="{Binding PrettyView,FallbackValue=5X^2+3X+6}"/>
+</UserControl>
