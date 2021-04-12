@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ToyMvvm.Model
 {
@@ -8,16 +10,12 @@ namespace ToyMvvm.Model
 
         public void Load()
         {
-            _formulas.Add(new Formula(5, -3, 2));
-            _formulas.Add(new Formula(2, 1, 0));
-            _formulas.Add(new Formula(-3, 1, 7));
+            _formulas.Add(new Formula(Guid.NewGuid(), 5, -3, 2));
+            _formulas.Add(new Formula(Guid.NewGuid(), 2, 1, 0));
+            _formulas.Add(new Formula(Guid.NewGuid(), -3, 1, 7));
         }
 
         public IReadOnlyList<Formula> Formulas => _formulas.AsReadOnly();
-
-        public void Save()
-        {
-        }
 
         public void AddFormula(Formula formula)
         {

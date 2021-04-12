@@ -1,4 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Documents;
+using ToyMvvm.Commands;
 using ToyMvvm.Model;
 
 namespace ToyMvvm.DataContext
@@ -9,6 +14,16 @@ namespace ToyMvvm.DataContext
 
         public ObservableCollection<FormulaContext> Formulas { get; set; } = new();
 
+        public FormulaContext SelectedFormula { get; set; }
+
+        public SaveFormulaCommand SaveFormulaCommand { get; }
+
+        public string A { get; set; }
+
+        public string B { get; set; }
+
+        public string C { get; set; }
+
         public FormulaStorageContext(FormulaStorage storage)
         {
             _storage = storage;
@@ -17,6 +32,8 @@ namespace ToyMvvm.DataContext
             {
                 Formulas.Add(new FormulaContext(formula));
             }
+
+            SaveFormulaCommand = new SaveFormulaCommand(this);
         }
     }
 }

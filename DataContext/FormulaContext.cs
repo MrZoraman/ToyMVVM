@@ -13,10 +13,13 @@ namespace ToyMvvm.DataContext
         }
 
         public Formula Formula => _formula;
-
-        public string PrettyView => $"{_formula.A}X^2 + {_formula.B}X + {_formula.C}";
-
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void Save(double a, double b, double c)
+        {
+            _formula.Save(a, b, c);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Formula)));
+        }
     }
 }
