@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToyMvvm.View"
+             xmlns:converters="clr-namespace:ToyMvvm.Converters"
              xmlns:datacontext="clr-namespace:ToyMvvm.DataContext"
              mc:Ignorable="d" 
               d:DataContext="{d:DesignInstance datacontext:FormulaContext}">
-    <Label Content="{Binding PrettyView,FallbackValue=5X^2+3X+6}"/>
+    <UserControl.Resources>
+        <converters:FormulaPrettyViewConverter x:Key="FormulaPrettyViewConverter"/>
+    </UserControl.Resources>
+    <Label Content="{Binding Formula, Converter={StaticResource FormulaPrettyViewConverter}}"/>
 </UserControl>
