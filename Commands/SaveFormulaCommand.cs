@@ -14,9 +14,6 @@ namespace ToyMvvm.Commands
         public SaveFormulaCommand(FormulaStorageContext context)
         {
             _context = context;
-
-            // do I need to do something like this?
-            //_context.Formulas.CollectionChanged += (sender, args) => CanExecuteChanged.Invoke();
         }
 
         public bool CanExecute(object parameter) => true;
