@@ -9,8 +9,6 @@ namespace ToyMvvm.DataContext
 
         public ObservableCollection<FormulaContext> Formulas { get; set; } = new();
 
-        public FormulaContext SelectedFormula { get; set; }
-
         public FormulaStorageContext(FormulaStorage storage)
         {
             _storage = storage;
