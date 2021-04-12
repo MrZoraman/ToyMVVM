@@ -34,5 +34,10 @@ namespace ToyMvvm
         {
             FormulaList.SelectedItem = null;
         }
+
+        private void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
