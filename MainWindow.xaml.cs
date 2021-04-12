@@ -29,5 +29,10 @@ namespace ToyMvvm
             storage.Load();
             DataContext = new FormulaStorageContext(storage);
         }
+
+        private void BtnNew_OnClick(object sender, RoutedEventArgs e)
+        {
+            FormulaList.SelectedItem = null;
+        }
     }
 }

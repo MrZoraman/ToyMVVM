@@ -39,12 +39,33 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1">New</Button>
+                    <Button Name="BtnNew" Grid.Column="1" Click="BtnNew_OnClick">New</Button>
                     <Button Grid.Column="3">Save</Button>
-                    <Button Grid.Column="5">Edit</Button>
+                    <Button Grid.Column="5">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Content" Value="Edit"/>
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=FormulaList, Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=FormulaList, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="Auto"/>
@@ -62,7 +83,7 @@
                 <Label Grid.Column="6"/>
             </Grid>
         </Grid>
-        <ListView Grid.Column="1" ItemsSource="{Binding Formulas}">
+        <ListView Name="FormulaList" Grid.Column="1" ItemsSource="{Binding Formulas}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <view:FormulaView/>
