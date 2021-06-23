@@ -7,88 +7,9 @@
         xmlns:datacontext ="clr-namespace:ToyMvvm.DataContext"
         xmlns:view="clr-namespace:ToyMvvm.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" d:DataContext="{d:DesignInstance datacontext:FormulaStorageContext}">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="20">
-                <TextBox Width="40" Text="{Binding A}"/>
-                <Label>X^2 +</Label>
-                <TextBox Width="40" Text="{Binding B}"/>
-                <Label>X +</Label>
-                <TextBox Width="40" Text="{Binding C}"/>
-            </StackPanel>
-            <Grid Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Name="BtnNew" Grid.Column="1" Click="BtnNew_OnClick">New</Button>
-                    <Button Name="BtnSave" Grid.Column="3" Command="{Binding SaveFormulaCommand}">Save</Button>
-                    <Button Grid.Column="5">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Content" Value="Edit"/>
-                                <Setter Property="IsEnabled" Value="True"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=FormulaList, Path=SelectedItem}" Value="{x:Null}">
-                                        <Setter Property="IsEnabled" Value="False"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="3">
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=FormulaList, Path=SelectedItem}" Value="{x:Null}">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="80"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="1">X =</Label>
-                <TextBox Grid.Column="2" Width="40"/>
-                <Button Grid.Column="4" Width="60">Calculate</Button>
-                <Label Grid.Column="5">Y =</Label>
-                <Label Grid.Column="6"/>
-            </Grid>
-        </Grid>
-        <ListView Name="FormulaList" Grid.Column="1" ItemsSource="{Binding Formulas}" SelectedItem="{Binding SelectedFormula, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <view:FormulaView/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
+        Title="MainWindow" Height="450" Width="800" d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
+    <StackPanel>
+        <Button Command="{Binding ToggleFooCommand}">Toggle Foo</Button>
+        <Label Content="{Binding FooSetString}"/>
+    </StackPanel>
 </Window>

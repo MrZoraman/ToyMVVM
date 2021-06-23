@@ -25,14 +25,11 @@ namespace ToyMvvm
         public MainWindow()
         {
             InitializeComponent();
-            var storage = new FormulaStorage();
-            storage.Load();
-            DataContext = new FormulaStorageContext(storage);
+            DataContext = new MainWindowViewModel(new BusinessLogicModel());
         }
 
         private void BtnNew_OnClick(object sender, RoutedEventArgs e)
         {
-            FormulaList.SelectedItem = null;
         }
     }
 }
